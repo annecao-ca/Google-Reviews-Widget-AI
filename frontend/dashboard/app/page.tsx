@@ -21,7 +21,7 @@ import {
   ExternalLink
 } from "lucide-react";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_WIDGET_BASE_URL ?? "http://localhost:4000";
+const BACKEND_URL = process.env.NEXT_PUBLIC_WIDGET_BASE_URL ?? "http://localhost:5001";
 
 const TEMPLATES = [
   { id: "grid", name: "Modern Grid", icon: LayoutGrid, layout: "grid", description: "Standard grid layout for any page" },
@@ -149,7 +149,9 @@ export default function DashboardPage() {
             showAuthorPhoto: true,
             cardStyle: "shadow",
             borderRadius: 12,
-            fontSize: 14
+            fontSize: 14,
+            minRating: 4,
+            sortBy: "rating"
           }
         })
       });
@@ -349,6 +351,36 @@ export default function DashboardPage() {
                       />
                     </label>
                   ))}
+                </section>
+
+                {/* Section: Filtering */}
+                <section className="space-y-4 pt-4 border-t border-slate-800/50">
+                  <label className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 block">Review Filtering</label>
+
+                  <div className="space-y-2">
+                    <span className="text-sm font-medium">Minimum Rating</span>
+                    <select
+                      value={widget.settings.minRating || 0}
+                      onChange={(e) => updateSettings({ minRating: parseInt(e.target.value) })}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all cursor-pointer"
+                    >
+                      <option value="0">All Reviews</option>
+                      <option value="4">4 Stars & Above</option>
+                      <option value="5">5 Stars Only</option>
+                    </select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <span className="text-sm font-medium">Display Priority</span>
+                    <select
+                      value={widget.settings.sortBy || "recent"}
+                      onChange={(e) => updateSettings({ sortBy: e.target.value as "recent" | "rating" })}
+                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all cursor-pointer"
+                    >
+                      <option value="recent">Newest Reviews First</option>
+                      <option value="rating">Highest Rated First</option>
+                    </select>
+                  </div>
                 </section>
               </div>
 

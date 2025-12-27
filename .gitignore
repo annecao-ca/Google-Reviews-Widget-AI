@@ -11,4 +11,6 @@ coverage/
 npm-debug.log*
 pnpm-lock.yaml
 .DS_Store
+*.db
+backend/prisma/*.db
 

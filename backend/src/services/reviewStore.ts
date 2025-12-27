@@ -46,12 +46,21 @@ export class ReviewStore {
     }
   }
 
-  async loadSummary(placeId: string): Promise<ReviewSummary | null> {
+  async loadSummary(placeId: string, settings?: any): Promise<ReviewSummary | null> {
+    const minRating = settings?.minRating ?? 0;
+    const sortBy = settings?.sortBy ?? "rating";
+
     const reviews = await prisma.review.findMany({
-      where: { placeId },
+      where: {
+        placeId,
+        rating: { gte: minRating }
+      },
       include: {
         insight: true,
       },
+      orderBy: sortBy === "rating"
+        ? [{ rating: "desc" }, { publishTime: "desc" }]
+        : [{ publishTime: "desc" }]
     });
 
     if (reviews.length === 0) {

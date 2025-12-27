@@ -17,7 +17,7 @@ export async function renderGoogleReviewWidget(options: WidgetOptions) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  const backendUrl = providedBackend ?? window.__GWR_BACKEND_BASE ?? "http://localhost:4000";
+  const backendUrl = providedBackend ?? window.__GWR_BACKEND_BASE ?? "http://localhost:5001";
 
   container.innerHTML = `<div class="gwr-loading">Loading reviews...</div>`;
 

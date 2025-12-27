@@ -31,7 +31,7 @@ Trong môi trường Production, nên sử dụng **PostgreSQL** thay vì SQLite
 - Environment Variables cần thiết:
   - `DATABASE_URL`: Link PostgreSQL.
   - `GOOGLE_API_KEY`: API Key của Google (cần bật Places API & Gemini API).
-  - `PORT`: 4000 (mặc định).
+  - `PORT`: 5001 (mặc định).
   - `NEXT_PUBLIC_WIDGET_BASE_URL`: Link domain của backend sau khi deploy (VD: `https://my-backend.render.com`).
 
 ### 3. Frontend Dashboard (Vercel)
@@ -46,7 +46,7 @@ Trong môi trường Production, nên sử dụng **PostgreSQL** thay vì SQLite
 1. Cài đặt: `npm run install:all`
 2. Tạo file `.env` trong thư mục gốc (xem `.env.example`).
 3. Chạy Backend: `npm run dev:backend`
-4. Chạy Dashboard: `npm run dev:dashboard` (tại http://localhost:3100)
+4. Chạy Dashboard: `npm run dev:dashboard` (tại http://localhost:3001)
 
 ---
 
@@ -60,7 +60,7 @@ DATABASE_URL="file:./dev.db" # Local SQLite
 # DATABASE_URL="postgresql://user:pass@host:5432/db" # Production PostgreSQL
 
 # URLs
-NEXT_PUBLIC_WIDGET_BASE_URL=http://localhost:4000
+NEXT_PUBLIC_WIDGET_BASE_URL=http://localhost:5001
 ```
 
 ---

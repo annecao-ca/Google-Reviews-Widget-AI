@@ -45,7 +45,7 @@ app.get("/embed.js", (_req, res) => {
   });
 });
 
-const PORT = process.env.PORT ? Number(process.env.PORT) : 4000;
+const PORT = process.env.PORT ? Number(process.env.PORT) : 5001;
 const apiKey = process.env.GOOGLE_API_KEY;
 
 if (!apiKey) {
@@ -231,7 +231,7 @@ app.get("/api/widgets/:id/summary", async (req, res) => {
       return res.status(404).json({ error: "widget not found" });
     }
     const service = new ReviewSyncService(widget.placeId, apiKey, widgetId);
-    const summary = await service.getSummary();
+    const summary = await service.getSummary(widget.settings);
 
     if (!summary) {
       return res.status(404).json({ error: "no summary yet. trigger sync first" });

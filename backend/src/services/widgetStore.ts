@@ -16,7 +16,9 @@ export class WidgetStore {
       showAuthorPhoto: true,
       cardStyle: "shadow",
       borderRadius: 12,
-      fontSize: 14
+      fontSize: 14,
+      minRating: 4,
+      sortBy: "rating"
     };
 
     const widget = await prisma.widget.create({

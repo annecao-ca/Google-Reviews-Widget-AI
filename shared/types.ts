@@ -38,6 +38,8 @@ export interface WidgetSettings {
   cardStyle: "flat" | "shadow" | "outline";
   borderRadius: number;
   fontSize: number;
+  minRating: number;
+  sortBy: "recent" | "rating";
 }
 
 export interface WidgetConfig {

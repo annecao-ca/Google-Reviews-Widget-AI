@@ -38,9 +38,9 @@ export class ReviewSyncService {
     };
   }
 
-  async getSummary(): Promise<ReviewSummary | null> {
-    console.log(`[ReviewSyncService] Loading summary for placeId: ${this.placeId}`);
-    return this.store.loadSummary(this.placeId);
+  async getSummary(settings?: any): Promise<ReviewSummary | null> {
+    console.log(`[ReviewSyncService] Loading summary for placeId: ${this.placeId} with settings:`, settings);
+    return this.store.loadSummary(this.placeId, settings);
   }
 }
 

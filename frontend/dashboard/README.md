@@ -10,6 +10,6 @@ Next.js app that visualizes the current Google Reviews sync and exposes controls
 
 ### Local development
 
-1. Set `NEXT_PUBLIC_WIDGET_BASE_URL` in `.env` or `.env.local` (e.g. `http://localhost:4000`).
+1. Set `NEXT_PUBLIC_WIDGET_BASE_URL` in `.env` or `.env.local` (e.g. `http://localhost:5001`).
 2. Run `npm run dev:dashboard` from the repository root to start the dashboard.
 

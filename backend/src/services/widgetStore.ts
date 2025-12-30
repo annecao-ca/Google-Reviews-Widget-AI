@@ -26,7 +26,7 @@ export class WidgetStore {
         placeId: config.placeId,
         businessName: config.businessName ?? "Business",
         title: config.title ?? "Google Reviews",
-        settings: (config.settings ?? defaultSettings) as unknown as Prisma.InputJsonValue,
+        settings: (config.settings ?? defaultSettings) as any,
       },
     });
 
@@ -59,7 +59,7 @@ export class WidgetStore {
     const data: Prisma.WidgetUpdateInput = {};
     if (updates.title !== undefined) data.title = updates.title;
     if (updates.businessName !== undefined) data.businessName = updates.businessName;
-    if (updates.settings !== undefined) data.settings = updates.settings as unknown as Prisma.InputJsonValue;
+    if (updates.settings !== undefined) data.settings = updates.settings as any;
 
     const widget = await prisma.widget.update({
       where: { id },

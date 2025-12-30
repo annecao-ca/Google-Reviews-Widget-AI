@@ -24,5 +24,5 @@
       "dest": "backend/src/index.ts"
     }
   ],
-  "outputDirectory": "backend/public"
+  "outputDirectory": "public"
 }

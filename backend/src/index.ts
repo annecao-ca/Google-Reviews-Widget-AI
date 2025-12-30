@@ -247,7 +247,11 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", service: "google-reviews-widget" });
 });
 
-app.listen(PORT, () => {
-  console.log(`Backend listening at http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== "production" || !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Backend listening at http://localhost:${PORT}`);
+  });
+}
+
+export default app;
 

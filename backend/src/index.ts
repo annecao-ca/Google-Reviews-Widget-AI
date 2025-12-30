@@ -49,8 +49,7 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 5001;
 const apiKey = process.env.GOOGLE_API_KEY;
 
 if (!apiKey) {
-  console.error("Missing GOOGLE_API_KEY.");
-  process.exit(1);
+  console.warn("Warning: GOOGLE_API_KEY is missing. API calls will fail.");
 }
 
 const widgetStore = new WidgetStore();
